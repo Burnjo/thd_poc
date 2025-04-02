@@ -1,43 +1,33 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>이름 호명 서비스</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-      background: black;
-    }
-    video {
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      display: block;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+        video {
+            width: 100%;
+            height: 100vh;
+            object-fit: contain;
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
-  <video id="video-bg" autoplay muted loop playsinline>
-    <source src="home.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-  <script>
-    const bgVideo = document.getElementById('video-bg');
-
-    window.addEventListener('click', async () => {
-      try {
-        bgVideo.muted = false;
-        await bgVideo.play();
-      } catch (e) {
-        console.warn('Autoplay with sound was blocked:', e);
-      }
-    }, { once: true });
-  </script>
+    <video controls playsinline>
+        <source src=home.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 </body>
 </html>
