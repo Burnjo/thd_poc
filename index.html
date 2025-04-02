@@ -5,14 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>이름 호명 서비스</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; overflow: hidden; font-family: sans-serif; background: black; }
-    #video-bg {
-      position: relative;
-      width: 100%;
+    html, body {
+      margin: 0;
+      padding: 0;
       height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background: black;
+    }
+    video {
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
-      z-index: 1;
       display: block;
     }
   </style>
@@ -26,7 +30,6 @@
   <script>
     const bgVideo = document.getElementById('video-bg');
 
-    // 사용자 클릭 시 사운드 켜고 재생 시도
     window.addEventListener('click', async () => {
       try {
         bgVideo.muted = false;
