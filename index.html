@@ -6,33 +6,37 @@
   <title>이름 호명 서비스</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; overflow: hidden; font-family: sans-serif; }
-    #video-bg {
+    html, body { height: 100%; overflow: hidden; font-family: sans-serif; background: black; }
+    #video-container {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    video {
+      width: 100%; height: auto;
+      max-height: 100%;
     }
   </style>
 </head>
 <body>
-  <video id="video-bg" autoplay loop playsinline>
-    <source src="your-background-video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <div id="video-container">
+    <video id="video-bg" controls autoplay>
+      <source src="your-background-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
   <script>
-    // 사운드 재생을 위한 사용자 입력 이벤트
     const bgVideo = document.getElementById('video-bg');
-    window.addEventListener('click', async () => {
-      try {
-        bgVideo.muted = false;
-        await bgVideo.play();
-      } catch (e) {
-        console.warn('Autoplay with sound was blocked:', e);
-      }
-    }, { once: true });
+
+    // 영상이 끝나면 처음부터 다시 재생
+    bgVideo.addEventListener('ended', () => {
+      bgVideo.currentTime = 0;
+      bgVideo.play();
+    });
   </script>
 </body>
 </html>
